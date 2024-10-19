@@ -1,9 +1,10 @@
 
 
 
+import configs from "../configs"
+
+// @ts-ignore
 import { SendMailClient } from "zeptomail";
-import "../config/index.js"
-import configs from "../configs/index.js";
 
 // const url = configs.ZEPTO_TOKEN;
 // const token = env.ZEPTO_TOKEN
@@ -35,7 +36,7 @@ const sendZeptoEmail  = async (
   isInvoiceStatement=false}: ISendZeptoEmail
 )  =>  {
   try {
-    await client.sendMail({
+    const data = await client.sendMail({
       from: {
         address: "noreply@visionstransport.com.my",
         name: isInvoiceStatement?"Vision Finance":"Vision Transport",
@@ -51,9 +52,15 @@ const sendZeptoEmail  = async (
       subject: subject,
       htmlbody: htmlbody,
     });
-    console.log("Email sent successfully.");
+    
+    console.dir({ data }, { 
+      colors: 'red', 
+      depth: "infinity"
+    })
+
+    return data
   } catch (error) {
-    console.error("Failed to send email:", error?.error?.details);
+    console.error("Failed to send email:", error);
     throw error;
   }
 }

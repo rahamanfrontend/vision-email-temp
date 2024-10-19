@@ -7,22 +7,32 @@ interface IOtpPayload {
   name: string;
   token: string;
   otp: string;
+  subject: string 
 }
 
 const verifyOtpEmail = async (payload: IOtpPayload) => {
 
-  const { email, name, token, otp } = payload;
+  const { email, name, token, otp, subject} = payload;
 
   // getHTMLTemplate: 
-  const emailTemplate = await render(Email({ name, token, otp }))
-
-  // const result = await sendZeptoEmail()
+  const emailTemplate = await render(Email({ name, token, otp }), {
+    pretty: true, 
+    
+  })
 
   console.log(emailTemplate)
-
-  return {
-    success: true
+  const result = await sendZeptoEmail({
+    subject, 
+    email_address: email, 
+    name, 
+    htmlbody: emailTemplate, 
+    isInvoiceStatement : false
   }
+    
+  )
+
+
+  return result
 
 
 }
