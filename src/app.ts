@@ -16,7 +16,7 @@ app.use(express.json())
 app.get('/', catchAsync(async (req, res) => { 
 
   res.json({ 
-     message: "Yah!!! Vision PDF server is running."
+     message: "Yah!!! Vision Email server is running."
    })
 }))
 
