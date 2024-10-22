@@ -17,7 +17,7 @@ import {
   Img,
 } from "@react-email/components";
 
-export const SendPasswordTemp = ({ name, password, resetLink}: { name: string, password: string, resetLink: string }) => {
+export const StatusUpdateTemp = ({ name, status}: { name: string, status: string}) => {
   return (
     <Tailwind
       // @ts-ignore
@@ -68,60 +68,19 @@ export const SendPasswordTemp = ({ name, password, resetLink}: { name: string, p
             <Section className="py-[24px] px-6 lg:px-[45px]">
               <Section className="px-[37.5px] py-[32px] bg-white">
                 <Text className="text-info text-[20px] font-semibold ">
-                  Your Secret Password is Here!
+                    Your Status Update!
                 </Text>
                 <Text className="text-info text-base mt-[16px] mb-[30px] font-normal capitalize">
                   Hi {name}
                 </Text>
                 <Text className="text-secondary text-base font-normal">
-                  Your new secret password is ready. For your security, please
-                  use the temporary password provided below and reset it once
-                  you log in.
+                   Your Current Status:
                 </Text>
-                <div className="flex  lg:flex-row flex-col my-6" >
-              <Text
-                    style={{
-                      margin: '0px',
-                      whiteSpace: 'nowrap',
-                    }}
-                    className="text-info d-flex items-center text-[16px] font-semibold flex"
-                  >
-                    <span
-                      style={{
-                        marginRight: '4px',
-                        display: 'inline-block',
-                      }}
-                    >
-                      Temporary Password:
-                    </span>
-                    <span className="text-primary">{password}</span>
-                  </Text>
-                 
-
-                </div>
-                 
-                <Text className="text-secondary mb-4 text-base font-normal ">
-                  To change your password, click on the button below.
+                   <Text className="password bg-primary text-white px-[20px] py-[10px] rounded inline-block">
+                {status}
                 </Text>
-                <Button
-                    href={resetLink && resetLink}
+                 
               
-                  className=" bg-primary mb-4">
-                  <div className=" text-white  flex items-center text-base font-medium gap-2 px-6 py-2" >
-                        <Img
-                          src={`https://visions3.s3.ap-south-1.amazonaws.com/email-assets/lock.png`}
-                          alt="Cat"
-                          // width="180px"
-                          // height="33px"
-                          className="block mx-auto"
-                    />
-                    <span className="block text-[16px] -mt-1" style={{ 
-                      marginLeft: '4px'
-                    }}>
-                      Reset password 
-                    </span>
-                  </div>
-                </Button>
                 <Text className="text-secondary mb-2 text-base font-normal ">
                   Best regards
                 </Text>

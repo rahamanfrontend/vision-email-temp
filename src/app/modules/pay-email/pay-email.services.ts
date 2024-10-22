@@ -1,26 +1,26 @@
-import { SendPasswordTemp } from './../../email-temp/send-password';
+import { PayEmail } from './../../email-temp/pay-email';
+
 
 import sendZeptoEmail from "../../helpers/sendZeptoEmail"
 import { render } from "@react-email/components";
 
-interface ISendPasswordPayload {
+interface IPayEmailPayload {
   email: string;
   name: string;
-  password: string; 
-  resetLink: string;
+  htmlTemp: string;
   subject: string 
 }
 
 
 
-const sendPassword = async (payload: ISendPasswordPayload) => {
+const sendEmail = async (payload: IPayEmailPayload) => {
 
-  const { email, name, password, resetLink, subject } = payload;
+  const { email, name, htmlTemp, subject } = payload;
 
   console.log({payload})
 
   // getHTMLTemplate: 
-  const emailTemplate = await render(SendPasswordTemp({ name, password , resetLink}), { 
+  const emailTemplate = await render(PayEmail({ name, htmlTemp}), { 
     pretty: true
   })
 
@@ -41,7 +41,7 @@ const sendPassword = async (payload: ISendPasswordPayload) => {
 
 
 
-export const sendPasswordServices = {
-  sendPassword
+export const payEmailServices  = {
+   sendEmail
 }
 

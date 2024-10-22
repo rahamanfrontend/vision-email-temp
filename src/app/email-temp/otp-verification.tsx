@@ -98,7 +98,7 @@ export const Email = ({
               
 
                 >
-                  <div className=" text-white  flex items-center gap-1 text-base font-medium gap-2 px-6 py-2">
+                  <div className=" text-white  flex items-center  text-base font-medium gap-2 px-6 py-2">
                     <Img
                       src={`https://visions3.s3.ap-south-1.amazonaws.com/email-assets/email.png`}
                       alt="Cat"
@@ -109,7 +109,9 @@ export const Email = ({
                     <span
                       className="block text-[16px] -mt-1"
                       style={{
+                        display: 'block',
                         marginLeft: "4px",
+                        marginTop: '-4px'
                       }}
                     >
                       Verify Email
@@ -118,7 +120,7 @@ export const Email = ({
                 </Button>
                 <Text className="text-secondary mb-4 text-base font-normal ">
                   If the button doesn't work, copy and paste this link into your
-                  browser:
+                  browser:  
                 </Text>
                 <Link
                   href={`${configs.frontendHost}/verify-otp?token=${token}`}
